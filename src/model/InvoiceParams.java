@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import org.apache.http.message.BasicNameValuePair;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 
  * @author Chaz Ferguson
@@ -33,6 +40,12 @@ public class InvoiceParams {
 	private String buyerEmail;
 	private String buyerPhone;
 
+	private String pluginName = "Java Client Library";
+	private String pluginVersion = "1.0";
+	private String serverInfo = "";
+	private String serverVersion = "";
+	private String addPluginInfo = "";
+	
 	public InvoiceParams() {
 		this.physical = false;
 		this.fullNotifications = false;
@@ -494,6 +507,21 @@ public class InvoiceParams {
 		}
 		if (this.buyerPhone != null) {
 			params.add(new BasicNameValuePair("buyerPhone", this.buyerPhone));
+		}
+		if (this.pluginName != null) {
+			params.add(new BasicNameValuePair("pluginName", this.pluginName));
+		}
+		if (this.pluginVersion != null) {
+			params.add(new BasicNameValuePair("pluginVersion", this.pluginVersion));
+		}
+		if (this.serverInfo != null) {
+			params.add(new BasicNameValuePair("serverInfo", this.serverInfo));
+		}
+		if (this.serverVersion != null) {
+			params.add(new BasicNameValuePair("serverVersion", this.serverVersion));
+		}
+		if (this.addPluginInfo != null) {
+			params.add(new BasicNameValuePair("addPluginInfo", this.addPluginInfo));
 		}
 		return params;
 	}
